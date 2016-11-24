@@ -470,7 +470,7 @@ function! ClangComplete(findstart, base)
     python vim.command('let l:res = ' + completions)
     python timer.registerEvent("Load into vimscript")
 
-    if g:clang_make_default_keymappings == 1
+    if g:clang_make_default_keymappings == 1 && g:clang_auto_select != 0
       if s:use_maparg
         let s:old_cr = maparg('<CR>', 'i', 0, 1)
       else
@@ -519,7 +519,7 @@ function! s:StopMonitoring()
     return
   endif
 
-  if g:clang_make_default_keymappings == 1
+  if g:clang_make_default_keymappings == 1 && g:clang_auto_select != 0
     " Restore original return and Ctrl-Y key mappings
 
     if s:use_maparg
